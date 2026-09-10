@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinas Pekerjaan Umum & Penataan Ruang Kota Ambon</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pupr: {
+                            blue: '#0F3854',
+                            lightblue: '#1E5276',
+                            yellow: '#FFB800',
+                            hoverYellow: '#E5A600',
+                            dark: '#081627',
+                            slate: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(15, 56, 84, 0.94) 0%, rgba(8, 22, 39, 0.88) 100%);
+        }
+        .yellow-glow {
+            box-shadow: 0 10px 30px -5px rgba(255, 184, 0, 0.45);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #FFB800;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .animate-float {
+            animation: floatSlow 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased selection:bg-pupr-yellow selection:text-pupr-blue">
+
+    <!-- Top Bar Info -->
+    <div class="bg-pupr-dark text-slate-300 text-xs py-2 px-4 sm:px-8 flex justify-between items-center border-b border-slate-800">
+        <div class="flex items-center space-x-4">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-pupr-yellow"></i> Jl. Yan Paays No. 30, Kelurahan Ahusen, Kecamatan Sirimau, Kota Ambon, Maluku</span>
+            <span class="hidden md:flex items-center gap-1.5"><i class="fa-solid fa-clock text-pupr-yellow"></i> Jam Kerja: 08:00 - 16:30 WIT</span>
+        </div>
+        <div class="flex items-center space-x-3">
+            <a href="tel:0911312757" class="hover:text-pupr-yellow transition flex items-center gap-1"><i class="fa-solid fa-phone text-pupr-yellow"></i> (0911) 312757</a>
+            <span class="text-slate-700">|</span>
+            <div class="flex space-x-2">
+                <a href="#" class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pupr-yellow hover:text-pupr-blue transition"><i class="fa-brands fa-facebook-f text-[10px]"></i></a>
+                <a href="#" class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pupr-yellow hover:text-pupr-blue transition"><i class="fa-brands fa-instagram text-[10px]"></i></a>
+                <a href="#" class="w-6 h-6 rounded-full bg-slate-800 flex items-center justify-center hover:bg-pupr-yellow hover:text-pupr-blue transition"><i class="fa-brands fa-youtube text-[10px]"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                
+                <!-- Branding & City Logo -->
+                <div class="flex items-center space-x-3">
+                    <img src="Lambang_Ambon.png" 
+                         alt="Logo Pemkot Ambon" 
+                         class="h-12 w-auto object-contain drop-shadow-sm hover:scale-105 transition"
+                         onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200&auto=format&fit=crop'">
+                    
+                    <div class="h-9 w-px bg-slate-200"></div>
+
+                    <div class="flex flex-col">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-[10px] font-extrabold uppercase tracking-wider text-pupr-blue bg-pupr-yellow px-2 py-0.5 rounded-full">
+                                Pemkot Ambon
+                            </span>
+                            <span class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200 flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> E-Disposisi Active
+                            </span>
+                        </div>
+                        <span class="text-xs sm:text-sm font-extrabold text-pupr-blue leading-tight tracking-tight mt-0.5">
+                            Dinas Pekerjaan Umum & Penataan Ruang
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Desktop Menu Nav -->
+                <div class="hidden lg:flex items-center space-x-6 text-sm font-semibold text-slate-700">
+                    <a href="#beranda" class="text-pupr-blue hover:text-pupr-yellow transition">Beranda</a>
+                    <a href="#tracking-surat" class="hover:text-pupr-blue transition flex items-center gap-1.5 bg-slate-100 hover:bg-pupr-yellow/20 px-3.5 py-1.5 rounded-full text-pupr-blue font-bold border border-slate-200">
+                        <i class="fa-solid fa-file-contract text-pupr-yellow"></i> Tracking Surat
+                    </a>
+                    <a href="#layanan" class="hover:text-pupr-blue transition">Layanan Publik</a>
+                    <a href="#penanggung-jawab" class="hover:text-pupr-blue transition">Staff Teknis</a>
+                    <a href="#kontak" class="hover:text-pupr-blue transition">Kontak</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden sm:flex items-center space-x-3">
+                    <button onclick="openModalGSheets()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 text-xs">
+                        <i class="fa-solid fa-file-excel"></i>
+                        <span>Sync Google Sheet</span>
+                    </button>
+                    <a href="#tracking-surat" class="bg-pupr-yellow hover:bg-pupr-hoverYellow text-pupr-blue font-extrabold px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 text-xs">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <span>Lacak Surat</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="lg:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-pupr-blue hover:bg-slate-100 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden lg:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-4 space-y-2 text-sm font-semibold">
+            <a href="#beranda" class="block py-2 text-pupr-blue">Beranda</a>
+            <a href="#tracking-surat" class="block py-2 text-slate-700 hover:text-pupr-blue"><i class="fa-solid fa-envelope me-2 text-pupr-yellow"></i> Tracking Disposisi Surat</a>
+            <a href="#layanan" class="block py-2 text-slate-700 hover:text-pupr-blue">Layanan Publik PUPR</a>
+            <a href="#penanggung-jawab" class="block py-2 text-slate-700 hover:text-pupr-blue">Pejabat Penanggung Jawab</a>
+            <button onclick="openModalGSheets()" class="w-full text-left py-2 text-emerald-700 font-bold"><i class="fa-solid fa-file-excel me-2"></i> Integrasi Google Spreadsheet</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="relative min-h-[640px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Modern Dark Overlay -->
+        <div class="absolute inset-0 z-0">
+          <img id="hero-bg"
+               src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=1600&auto=format&fit=crop"
+               alt="Gedung Dinas PUPR Kota Ambon"
+               class="w-full h-full object-cover object-center scale-105 transform transition-opacity duration-1000 opacity-100">
+          
+          <div class="absolute inset-0 bg-black" style="opacity: 0.5;"></div>
+        </div>
+
+        <!-- Floating Decorative Glow Ambient Lights -->
+        <div class="absolute -bottom-10 -left-10 w-80 h-80 bg-pupr-yellow/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -top-10 -right-10 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-white w-full">
+            <div class="max-w-3xl mx-auto text-center space-y-6">
+                
+                <!-- Hero Text & Taglines -->
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full text-xs font-bold text-pupr-yellow tracking-wide uppercase shadow-inner mx-auto">
+                    <span class="w-2.5 h-2.5 rounded-full bg-pupr-yellow animate-ping"></span>
+                    Sistem Layanan Disposisi Digital & Transparansi
+                </div>
+
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                    Mewujudkan <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-pupr-yellow via-amber-300 to-yellow-200">
+                        Ambon yang Berkelanjutan
+                    </span>
+                </h1>
+
+                <p class="text-slate-200 text-sm sm:text-lg font-light leading-relaxed mx-auto">
+                    Portal terintegrasi Dinas Pekerjaan Umum dan Penataan Ruang Kota Ambon. Pantau status surat masuk, disposisi pimpinan, penanggung jawab teknis, hingga dokumentasi bukti fisik pengerjaan di lapangan secara real-time.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-wrap gap-4 pt-2 justify-center">
+                    <a href="#tracking-surat" class="bg-pupr-yellow hover:bg-pupr-hoverYellow text-pupr-blue font-extrabold px-7 py-3.5 rounded-2xl shadow-lg yellow-glow transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3">
+                        <i class="fa-solid fa-square-poll-vertical text-lg"></i>
+                        <span>Cek Status & Scan Surat</span>
+                    </a>
+                    <button onclick="openModalAddSurat()" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold px-6 py-3.5 rounded-2xl backdrop-blur-md transition duration-300 flex items-center gap-2.5">
+                        <i class="fa-solid fa-plus-circle text-pupr-yellow"></i>
+                        <span>+ Input Surat Baru</span>
+                    </button>
+                </div>
+
+                <!-- Live Badges -->
+                <div class="pt-6 grid grid-cols-3 gap-4 border-t border-white/10 max-w-xl mx-auto text-center">
+                    <div>
+                        <div class="text-2xl font-black text-pupr-yellow" id="stat-total-surat">0</div>
+                        <div class="text-xs text-slate-300">Surat Terdaftar</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-emerald-400" id="stat-selesai">0</div>
+                        <div class="text-xs text-slate-300">Selesai Ditindaklanjuti</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-pupr-yellow">100%</div>
+                        <div class="text-xs text-slate-300">Google Sheet Sync</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN SECTION: Tracking & Monitoring Surat Masuk -->
+    <section id="tracking-surat" class="py-16 bg-slate-100/80 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Section Title -->
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-pupr-blue bg-pupr-yellow/30 px-3.5 py-1.5 rounded-full border border-pupr-yellow/40">
+                    E-Disposisi & Transparansi Pelayanan
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-black text-pupr-blue mt-3 tracking-tight">
+                    Irigasi<br>
+                    <span class="text-lg sm:text-2xl font-bold block mt-1">Integrasi Rekam Informasi dan Monitoring Administrasi Surat Instansi</span>
+                </h2>
+                <p class="text-slate-600 mt-2 text-sm sm:text-base">
+                    Monitoring lengkap mencakup Nomor, Tanggal, Penanggung Jawab, Status, Asal, Perihal, Disposisi Pimpinan, Dokumentasi Lapangan, Scan PDF/Foto, serta Terhubung Google Spreadsheet.
+                </p>
+            </div>
+
+            <!-- Toolbar & Google Sheets Sync Bar -->
+            <div class="bg-white rounded-3xl shadow-sm border border-slate-200 p-5 sm:p-6 mb-8">
+                
+                <!-- Google Sheets Live Connection Bar -->
+                <div class="mb-5 pb-5 border-b border-slate-100 flex flex-wrap items-center justify-between gap-4 bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xl shadow-md">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="font-black text-sm text-slate-800">Status Google Spreadsheet:</span>
+                                <span id="gsheets-status-badge" class="inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300">
+                                    <span class="w-2 h-2 rounded-full bg-amber-500 me-1.5 animate-pulse"></span>
+                                    Demo Mode (Data Lokal)
+                                </span>
+                            </div>
+                            <p class="text-[11px] text-slate-500 mt-0.5" id="gsheets-last-sync-text">Klik 'Hubungkan Google Sheet' untuk sinkronisasi live dengan database cloud Anda.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="syncGoogleSheetsData()" id="btn-sync-gsheets" class="bg-white hover:bg-slate-100 text-slate-700 text-xs font-bold px-3.5 py-2.5 rounded-xl border border-slate-300 transition flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-rotate text-pupr-blue"></i>
+                            <span>Muat Ulang Data</span>
+                        </button>
+                        <button onclick="openModalGSheets()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+                            <i class="fa-solid fa-plug"></i>
+                            <span>Hubungkan Google Sheet</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Search and Status Filter Row -->
+                <div class="flex flex-col lg:flex-row gap-4 items-center justify-between">
+                    
+                    <!-- Search Input -->
+                    <div class="w-full lg:w-1/2 relative">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
+                        <input type="text" id="search-surat-input" onkeyup="filterSuratTable()" 
+                               placeholder="Cari nomor surat, perihal, pengirim, atau penanggung jawab..." 
+                               class="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-pupr-blue focus:outline-none transition">
+                    </div>
+
+                    <!-- Status Filters -->
+                    <div class="flex flex-wrap items-center gap-2 w-full lg:w-auto justify-start lg:justify-end">
+                        <button onclick="setFilterStatus('ALL')" class="status-btn active-status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-pupr-blue text-white shadow-sm" id="btn-status-all">
+                            Semua Surat
+                        </button>
+                        <button onclick="setFilterStatus('SELESAI')" class="status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-emerald-50 hover:text-emerald-700" id="btn-status-selesai">
+                            <i class="fa-solid fa-circle-check text-emerald-500 me-1"></i> Selesai
+                        </button>
+                        <button onclick="setFilterStatus('PROSES')" class="status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-amber-50 hover:text-amber-700" id="btn-status-proses">
+                            <i class="fa-solid fa-spinner text-amber-500 me-1"></i> Diproses
+                        </button>
+                        <button onclick="setFilterStatus('DISPOSISI')" class="status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-slate-100 text-slate-600 hover:bg-blue-50 hover:text-blue-700" id="btn-status-disposisi">
+                            <i class="fa-solid fa-share text-blue-500 me-1"></i> Disposisi
+                        </button>
+                        <button onclick="openModalAddSurat()" class="bg-pupr-yellow hover:bg-pupr-hoverYellow text-pupr-blue font-extrabold px-3.5 py-2 rounded-xl text-xs transition flex items-center gap-1 shadow-sm">
+                            <i class="fa-solid fa-plus"></i> Tambah
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Surat Data Table Container -->
+            <div class="bg-white rounded-3xl shadow-md border border-slate-200 overflow-hidden">
+                <div class="overflow-x-auto custom-scrollbar">
+                    <table class="w-full text-left border-collapse" id="table-surat">
+                        <thead>
+                            <tr class="bg-pupr-blue text-white text-[11px] uppercase font-black tracking-wider border-b border-slate-700">
+                                <th class="p-4 w-12 text-center">#</th>
+                                <th class="p-4">Nomor & Tanggal</th>
+                                <th class="p-4">Asal Surat</th>
+                                <th class="p-4">Perihal Surat</th>
+                                <th class="p-4">Penanggung Jawab</th>
+                                <th class="p-4 text-center">Status</th>
+                                <th class="p-4 text-center">Aksi (Scan & Dokumentasi)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 text-sm font-medium" id="surat-list-tbody">
+                            <!-- Dynamically Generated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Footer Counter Info -->
+                <div class="px-6 py-4 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-3">
+                    <div>Menampilkan <span class="font-bold text-slate-800" id="count-visible">0</span> dari <span class="font-bold text-slate-800" id="count-total">0</span> data surat terdaftar</div>
+                    <div class="flex items-center space-x-2">
+                        <span class="text-slate-400"><i class="fa-solid fa-circle-info me-1"></i> Klik <b>"Detail Disposisi & Scan"</b> untuk melihat scan isi surat & foto bukti lapangan.</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MODAL 1: Detail Lengkap Surat -->
+    <div id="modal-detail-surat" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-4xl w-full shadow-2xl border border-slate-200 my-8 overflow-hidden transform transition-all duration-300">
+            
+            <!-- Modal Header -->
+            <div class="bg-pupr-blue text-white px-6 py-4 flex justify-between items-center border-b border-slate-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-pupr-yellow text-pupr-blue font-black flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg leading-snug">Rincian Tracking & Disposisi Surat Digital</h3>
+                        <p class="text-xs text-slate-300">Dinas Pekerjaan Umum & Penataan Ruang Kota Ambon</p>
+                    </div>
+                </div>
+                <button onclick="closeModalDetail()" class="text-slate-300 hover:text-white p-2 rounded-xl hover:bg-white/10 transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6 space-y-6 max-h-[80vh] overflow-y-auto custom-scrollbar">
+                
+                <!-- Status Banner & Last Sync Badge -->
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+                    <div>
+                        <span class="text-[10px] text-slate-500 font-extrabold uppercase tracking-wider block mb-1">Status Surat Saat Ini</span>
+                        <div id="modal-status-badge"></div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slate-500 font-extrabold uppercase tracking-wider block mb-1">Bidang Kerja PUPR</span>
+                        <span class="text-xs font-bold text-pupr-blue bg-blue-50 px-3 py-1 rounded-full border border-blue-200" id="modal-bidang">-</span>
+                    </div>
+                    <div>
+                        <span class="text-[10px] text-slate-500 font-extrabold uppercase tracking-wider block mb-1">Terakhir Diperbarui</span>
+                        <span class="text-xs font-semibold text-slate-700" id="modal-last-update">-</span>
+                    </div>
+                </div>
+
+                <!-- 2-Column Metadata Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
+                    <!-- Nomor Surat & Tanggal Surat -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="border-b pb-2.5 flex items-center justify-between">
+                            <span class="text-xs font-extrabold uppercase text-slate-500"><i class="fa-solid fa-hashtag text-pupr-yellow me-1.5"></i> Nomor Surat</span>
+                            <span class="text-sm font-black text-pupr-blue" id="modal-nomor-surat">-</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-1">
+                            <span class="text-xs font-extrabold uppercase text-slate-500"><i class="fa-regular fa-calendar-check text-pupr-yellow me-1.5"></i> Tanggal Surat</span>
+                            <span class="text-sm font-bold text-slate-800" id="modal-tanggal-surat">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Asal Surat & Penanggung Jawab Surat -->
+                    <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="border-b pb-2.5 flex items-center justify-between">
+                            <span class="text-xs font-extrabold uppercase text-slate-500"><i class="fa-solid fa-building-flag text-pupr-yellow me-1.5"></i> Asal Surat</span>
+                            <span class="text-sm font-bold text-slate-800 text-right" id="modal-asal-surat">-</span>
+                        </div>
+                        <div class="flex items-center justify-between pt-1">
+                            <span class="text-xs font-extrabold uppercase text-slate-500"><i class="fa-solid fa-user-gear text-pupr-yellow me-1.5"></i> Penanggung Jawab</span>
+                            <div class="text-right" id="modal-pj-container"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Perihal Surat -->
+                <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm">
+                    <span class="text-xs font-extrabold uppercase text-slate-500 block mb-1">
+                        <i class="fa-solid fa-pen-to-square text-pupr-yellow me-1.5"></i> Perihal Surat / Ringkasan Permohonan
+                    </span>
+                    <p class="text-slate-800 font-bold text-base leading-relaxed" id="modal-perihal-surat">-</p>
+                </div>
+
+                <!-- Disposisi Pimpinan -->
+                <div class="bg-amber-50/80 border-l-4 border-pupr-yellow p-5 rounded-r-2xl shadow-sm">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-black uppercase text-amber-900 flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-check text-pupr-yellow text-lg"></i> Disposisi & Catatan Pimpinan (Kepala Dinas / Wali Kota)
+                        </span>
+                        <span class="text-[10px] font-extrabold text-amber-800 bg-amber-200/80 px-2.5 py-0.5 rounded-full">Instruksi Resmi</span>
+                    </div>
+                    <p class="text-slate-800 text-sm font-semibold italic bg-white/90 p-3.5 rounded-xl border border-amber-200/80 leading-relaxed" id="modal-disposisi-pimpinan">"-"</p>
+                </div>
+
+                <!-- Dokumentasi & Scan Surat Tabs -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                    <div class="flex border-b border-slate-200 bg-slate-50">
+                        <button onclick="switchModalTab('scan')" id="tab-btn-scan" class="flex-1 py-3 px-4 font-extrabold text-xs uppercase tracking-wider text-center border-b-2 border-pupr-blue text-pupr-blue bg-white transition">
+                            <i class="fa-solid fa-file-pdf me-1.5 text-rose-500"></i> Scan Isi Surat
+                        </button>
+                        <button onclick="switchModalTab('dokumentasi')" id="tab-btn-dokumentasi" class="flex-1 py-3 px-4 font-extrabold text-xs uppercase tracking-wider text-center text-slate-500 border-b-2 border-transparent hover:text-pupr-blue transition">
+                            <i class="fa-solid fa-camera-retro me-1.5 text-emerald-500"></i> Dokumentasi Tindak Lanjut
+                        </button>
+                    </div>
+
+                    <!-- TAB CONTENT BODY -->
+                    <div class="p-5">
+                        
+                        <!-- TAB: Scan Document View -->
+                        <div id="tab-content-scan" class="space-y-3">
+                            <div class="flex items-center justify-between text-xs text-slate-500">
+                                <span>Dokumen Terpindai Resmi (PDF / Gambar)</span>
+                                <button onclick="simulateDownloadDoc()" class="text-pupr-blue font-bold hover:underline flex items-center gap-1">
+                                    <i class="fa-solid fa-download"></i> Unduh Berkas Scan
+                                </button>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-2xl flex flex-col items-center justify-center min-h-[320px] border border-slate-800 text-center relative overflow-hidden" id="scan-preview-box">
+                                <img id="modal-scan-img" src="" alt="Scan Isi Surat" class="max-h-[400px] w-auto object-contain rounded-lg shadow-xl hover:scale-105 transition cursor-zoom-in">
+                                <div class="mt-2 text-[11px] text-slate-400"><i class="fa-solid fa-magnifying-glass-plus me-1"></i> Klik atau tap gambar untuk memperbesar scan isi surat</div>
+                            </div>
+                        </div>
+
+                        <!-- TAB: Dokumentasi Setelah Surat Ditindaklanjuti -->
+                        <div id="tab-content-dokumentasi" class="hidden space-y-4">
+                            <div class="flex items-center justify-between text-xs text-slate-500">
+                                <span>Foto Bukti Pengerjaan Fisik / Peninjauan Sektor PUPR</span>
+                                <span class="bg-emerald-100 text-emerald-800 font-bold px-2.5 py-0.5 rounded-full text-[10px]">Pekerjaan Selesai</span>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" id="modal-dokumentasi-gallery"></div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs text-slate-700">
+                                <strong class="text-pupr-blue flex items-center gap-1.5 mb-1"><i class="fa-solid fa-clipboard-list text-pupr-yellow"></i> Catatan Hasil Lapangan:</strong>
+                                <p id="modal-catatan-lapangan" class="font-normal leading-relaxed text-slate-600">-</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-50 px-6 py-4 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <span class="text-xs text-slate-500"><i class="fa-solid fa-database text-emerald-600 me-1"></i> Terhubung Google Sheet Sync Engine</span>
+                <button onclick="closeModalDetail()" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-900 text-white font-bold px-6 py-2.5 rounded-xl text-xs transition">
+                    Tutup Tampilan
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL 2: Config Google Sheets Connection & Generator -->
+    <div id="modal-google-sheets" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-3xl w-full shadow-2xl border border-slate-200 my-8 overflow-hidden transform transition-all duration-300">
+            
+            <!-- Modal Header -->
+            <div class="bg-emerald-800 text-white px-6 py-4 flex justify-between items-center border-b border-emerald-700">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-400 text-emerald-950 font-black flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-file-excel"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-extrabold text-lg leading-snug">Pengaturan Integrasi Google Spreadsheet</h3>
+                        <p class="text-xs text-emerald-200">Hubungkan Database Cloud Google Sheet Dinas PUPR Kota Ambon</p>
+                    </div>
+                </div>
+                <button onclick="closeModalGSheets()" class="text-emerald-200 hover:text-white p-2 rounded-xl hover:bg-white/10 transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-6 space-y-6 max-h-[75vh] overflow-y-auto custom-scrollbar">
+                
+                <!-- URL Input -->
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
+                    <label class="block text-xs font-black uppercase tracking-wider text-slate-700">
+                        URL Web App Google Apps Script atau Webhook Endpoint
+                    </label>
+                    <div class="relative">
+                        <input type="text" id="gsheets-url-input" 
+                               placeholder="https://script.google.com/macros/s/AKfycb.../exec" 
+                               class="w-full pl-10 pr-4 py-3 rounded-xl border border-slate-300 text-xs font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                        <i class="fa-solid fa-link absolute left-3.5 top-3.5 text-slate-400"></i>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-between text-xs text-slate-500 gap-2">
+                        <span>Masukkan URL Web App dari Apps Script spreadsheet Anda.</span>
+                        <button onclick="fillSampleGSheetURL()" class="text-emerald-700 font-bold hover:underline">
+                            <i class="fa-solid fa-wand-magic-sparkles me-1"></i> Gunakan URL Tes Demo
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Apps Script Guide -->
+                <div class="space-y-4">
+                    <h4 class="text-xs font-black uppercase tracking-wider text-slate-700 flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-emerald-600"></i>
+                        Panduan Langkah-demi-Langkah Integrasi:
+                    </h4>
+
+                    <ol class="space-y-3 text-xs text-slate-600 font-medium">
+                        <li class="flex items-start gap-2.5 bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 font-extrabold flex items-center justify-center shrink-0">1</span>
+                            <div>
+                                <strong class="text-slate-800">Susun Kolom Google Spreadsheet Anda:</strong>
+                                <p class="mt-1">Buat Google Sheet baru dengan header di Baris 1 berikut:</p>
+                                <div class="mt-2 bg-slate-100 p-2 rounded-lg text-[11px] font-mono text-slate-700 overflow-x-auto border border-slate-200">
+                                    [NomorSurat] | [Tanggal] | [AsalSurat] | [Perihal] | [PenanggungJawab] | [Status] | [Disposisi] | [ScanURL] | [FotoLapangan] | [Catatan]
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="flex items-start gap-2.5 bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 font-extrabold flex items-center justify-center shrink-0">2</span>
+                            <div>
+                                <strong class="text-slate-800">Tempelkan Google Apps Script:</strong> Di Google Sheet, buka <i>Ekstensi &gt; Apps Script</i>, ganti isi skrip dengan kode berikut:
+                                <div class="relative mt-2">
+                                    <pre class="bg-slate-900 text-slate-200 p-3.5 rounded-xl text-[10px] font-mono overflow-x-auto max-h-40 custom-scrollbar leading-relaxed border border-slate-800" id="apps-script-code-block">function doGet(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var rows = sheet.getDataRange().getValues();
+  var data = [];
+  
+  for (var i = 1; i < rows.length; i++) {
+    var r = rows[i];
+    if(!r[0]) continue;
+    data.push({
+      id: i,
+      nomorSurat: String(r[0] || ""),
+      tanggalSurat: String(r[1] || ""),
+      asalSurat: String(r[2] || ""),
+      perihalSurat: String(r[3] || ""),
+      pj: {
+        nama: String(r[4] || "Staf Teknis PUPR"),
+        jabatan: "Staf Teknis Disposisi Surat",
+        avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop"
+      },
+      status: String(r[5] || "PROSES").toUpperCase(),
+      statusText: String(r[5]).toUpperCase() === "SELESAI" ? "Selesai Ditindaklanjuti" : "Dalam Proses Lapangan",
+      statusClass: String(r[5]).toUpperCase() === "SELESAI" ? "bg-emerald-100 text-emerald-800 border-emerald-300" : "bg-amber-100 text-amber-800 border-amber-300",
+      disposisiPimpinan: String(r[6] || "Petunjuk Kadis PUPR"),
+      scanSuratUrl: String(r[7] || "https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=800&auto=format&fit=crop"),
+      dokumentasiPhotos: r[8] ? String(r[8]).split(',') : ["https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=800&auto=format&fit=crop"],
+      catatanLapangan: String(r[9] || "Pencatatan dari verifikasi lapangan."),
+      bidang: "PUPR Ambon",
+      lastUpdate: new Date().toLocaleDateString('id-ID')
+    });
+  }
+  
+  return ContentService.createTextOutput(JSON.stringify(data))
+    .setMimeType(ContentService.MimeType.JSON);
+}</pre>
+                                    <button onclick="copyAppsScriptCode()" class="absolute top-2 right-2 bg-white/20 hover:bg-white/30 text-white text-[10px] font-bold px-2.5 py-1 rounded-md backdrop-blur transition">
+                                        <i class="fa-regular fa-copy me-1"></i> Salin Kode
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="flex items-start gap-2.5 bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm">
+                            <span class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 font-extrabold flex items-center justify-center shrink-0">3</span>
+                            <div>
+                                <strong class="text-slate-800">Deploy Web App:</strong> Klik <i>Deploy &gt; New deployment</i>. Pilih jenis <b>Web app</b>, set "Who has access" ke <b>Anyone</b>, lalu simpan URL yang dihasilkan di form atas.
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="bg-slate-50 px-6 py-4 border-t border-slate-200 flex flex-col sm:flex-row justify-between items-center gap-3">
+                <button onclick="resetToLocalData()" class="text-xs font-bold text-slate-500 hover:text-slate-800 transition">
+                    <i class="fa-solid fa-rotate-left me-1"></i> Kembali ke Data Demo Lokal
+                </button>
+                <div class="flex items-center space-x-2 w-full sm:w-auto">
+                    <button onclick="closeModalGSheets()" class="flex-1 sm:flex-none bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold px-4 py-2.5 rounded-xl transition">
+                        Batal
+                    </button>
+                    <button onclick="saveGoogleSheetsConfig()" class="flex-1 sm:flex-none bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-5 py-2.5 rounded-xl shadow transition flex items-center justify-center gap-1.5">
+                        <i class="fa-solid fa-floppy-disk"></i>
+                        <span>Simpan & Hubungkan</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- MODAL 3: Tambah Surat Baru (Form Dynamic Generator) -->
+    <div id="modal-add-surat" class="fixed inset-0 z-50 hidden bg-slate-900/80 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-200 my-8 overflow-hidden">
+            <div class="bg-pupr-blue text-white px-6 py-4 flex justify-between items-center">
+                <h3 class="font-bold text-base"><i class="fa-solid fa-file-circle-plus text-pupr-yellow me-2"></i> Input Surat Masuk Baru</h3>
+                <button onclick="closeModalAddSurat()" class="text-slate-300 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <form onsubmit="event.preventDefault(); submitNewSurat();" class="p-6 space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Nomor Surat</label>
+                        <input type="text" id="add-nomor" required placeholder="005/PUPR-ABN/2026/..." class="w-full p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-pupr-blue">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Tanggal Surat</label>
+                        <input type="date" id="add-tanggal" required class="w-full p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-pupr-blue">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Asal Surat</label>
+                        <input type="text" id="add-asal" required placeholder="Camat Sirimau / Kelurahan..." class="w-full p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-pupr-blue">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 mb-1">Staff Teknis Penanggung Jawab</label>
+                        <select id="add-bidang" class="w-full p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-pupr-blue font-bold">
+                            <option value="Hermin Taranda, ST">Hermin Taranda, ST</option>
+                            <option value="Pieter G. Talakua, ST">Pieter G. Talakua, ST</option>
+                            <option value="Junior Lokollo, ST">Junior Lokollo, ST</option>
+                            <option value="Rajiv Kadir Sabban, ST">Rajiv Kadir Sabban, ST</option>
+                            <option value="Gabriella O. Lisata, ST">Gabriella O. Lisata, ST</option>
+                            <option value="Ryan William Manuputty, ST">Ryan William Manuputty, ST</option>
+                            <option value="Erdin Calvin Leuwol, ST">Erdin Calvin Leuwol, ST</option>
+                            <option value="Lakam Laitupa, S.Tr. T.K.J.J.">Lakam Laitupa, S.Tr. T.K.J.J.</option>
+                            <option value="Yuliana Barbara Persulessy, ST">Yuliana Barbara Persulessy, ST</option>
+                            <option value="Mutiah Zaila Isti Ishak, S.PWK">Mutiah Zaila Isti Ishak, S.PWK</option>
+                            <option value="Hegi Daniel Mulya, ST">Hegi Daniel Mulya, ST</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Perihal Surat</label>
+                    <textarea id="add-perihal" required rows="2" placeholder="Jelaskan ringkasan permohonan..." class="w-full p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-pupr-blue"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 mb-1">Catatan Disposisi Pimpinan</label>
+                    <textarea id="add-disposisi" required rows="2" placeholder="Instruksi Kadis PUPR..." class="w-full p-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-pupr-blue"></textarea>
+                </div>
+                <div class="flex justify-end space-x-2 pt-2">
+                    <button type="button" onclick="closeModalAddSurat()" class="px-4 py-2 rounded-xl bg-slate-200 text-xs font-bold">Batal</button>
+                    <button type="submit" class="px-5 py-2 rounded-xl bg-pupr-yellow text-pupr-blue font-extrabold text-xs shadow-md">Simpan Surat</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SECTION: Services PUPR Kota Ambon -->
+    <section id="layanan" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-extrabold uppercase tracking-widest text-pupr-blue bg-pupr-yellow/30 px-3.5 py-1 rounded-full">Layanan Publik Digital</span>
+                <h2 class="text-3xl font-black text-pupr-blue mt-2">Pelayanan Utama Bidang PSDA-IP</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-pupr-blue text-pupr-yellow flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition"><i class="fa-solid fa-person-walking"></i></div>
+                    <h3 class="font-extrabold text-base text-pupr-blue mb-1">Jalan Setapak</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-pupr-blue text-pupr-yellow flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition"><i class="fa-solid fa-water"></i></div>
+                    <h3 class="font-extrabold text-base text-pupr-blue mb-1">Drainase</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-pupr-blue text-pupr-yellow flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3 class="font-extrabold text-base text-pupr-blue mb-1">Talud (Sungai, Tanah, Pantai)</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-pupr-blue text-pupr-yellow flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition"><i class="fa-solid fa-faucet-drip"></i></div>
+                    <h3 class="font-extrabold text-base text-pupr-blue mb-1">Air Bersih</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-pupr-blue text-pupr-yellow flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition"><i class="fa-solid fa-toilet"></i></div>
+                    <h3 class="font-extrabold text-base text-pupr-blue mb-1">Sanitasi</h3>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200 hover:shadow-xl transition group">
+                    <div class="w-12 h-12 rounded-2xl bg-pupr-blue text-pupr-yellow flex items-center justify-center font-bold text-2xl mb-4 group-hover:scale-110 transition"><i class="fa-solid fa-building"></i></div>
+                    <h3 class="font-extrabold text-base text-pupr-blue mb-1">Bangunan</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION: Pejabat Penanggung Jawab -->
+    <section id="penanggung-jawab" class="py-16 bg-slate-100 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-10">
+                <span class="text-xs font-bold uppercase tracking-widest text-pupr-blue bg-pupr-yellow/30 px-3 py-1 rounded-full">Struktur Penanggung Jawab</span>
+                <h2 class="text-3xl font-extrabold text-pupr-blue mt-2">Staf Teknis Disposisi Surat</h2>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="pj-officers-grid"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-pupr-dark text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-slate-800">
+                <div class="md:col-span-5 space-y-4">
+                    <div class="flex items-center space-x-3">
+                       <img src="Lambang_Ambon.png" alt="Logo Kota Ambon" style="height: 45px; width: auto;" class="object-contain" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=200&auto=format&fit=crop'">
+                        <div>
+                            <div class="font-extrabold text-base text-white">Dinas PUPR Kota Ambon</div>
+                            <div class="text-xs text-pupr-yellow font-medium">Pemerintah Kota Ambon • Maluku</div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+                        Mewujudkan pembangunan infrastruktur yang handal, inklusif, dan tertata secara berkelanjutan demi kesejahteraan warga Kota Ambon.
+                    </p>
+                </div>
+                <div class="md:col-span-3 space-y-3 text-xs text-slate-300">
+                    <h4 class="font-extrabold text-pupr-yellow text-sm uppercase">Kontak Kantor</h4>
+                    <p><i class="fa-solid fa-location-dot text-pupr-yellow me-2"></i> Jl. Yan Paays No. 30, Kelurahan Ahusen, Kecamatan Sirimau, Kota Ambon, Maluku</p>
+                    <p><i class="fa-solid fa-phone text-pupr-yellow me-2"></i> (0911) 312757</p>
+                    <p><i class="fa-solid fa-envelope text-pupr-yellow me-2"></i> pupr@ambon.go.id</p>
+                </div>
+                <div class="md:col-span-4 space-y-3">
+                    <h4 class="font-extrabold text-pupr-yellow text-sm uppercase">Pemberitahuan Sistem</h4>
+                    <div class="bg-slate-900 p-3.5 rounded-2xl border border-slate-800 text-xs text-slate-400">
+                        Sistem pelacakan e-Disposisi ini secara langsung terhubung dengan Google Spreadsheet resmi Dinas Pekerjaan Umum & Penataan Ruang Kota Ambon.
+                    </div>
+                </div>
+            </div>
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-2">
+                <div>© 2026 Dinas Pekerjaan Umum & Penataan Ruang Kota Ambon. All Rights Reserved.</div>
+                <div>Sistem E-Disposisi v3.5 • Ambon Manise</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Message -->
+    <div id="toast-message" class="fixed bottom-5 right-5 z-50 hidden bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 text-xs font-bold flex items-center space-x-3 transition transform">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-text">Pemberitahuan</span>
+    </div>
+
+    <!-- MAIN SCRIPT ENGINE -->
+    <script>
+        const OFFICERS_DATA = {
+            "Hermin Taranda, ST": { nama: "Hermin Taranda, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19830214 200801 2 005", avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop" },
+            "Pieter G. Talakua, ST": { nama: "Pieter G. Talakua, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19810510 200604 1 009", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" },
+            "Junior Lokollo, ST": { nama: "Junior Lokollo, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19870921 201101 1 003", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=200&auto=format&fit=crop" },
+            "Rajiv Kadir Sabban, ST": { nama: "Rajiv Kadir Sabban, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19890415 201402 1 002", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=200&auto=format&fit=crop" },
+            "Gabriella O. Lisata, ST": { nama: "Gabriella O. Lisata, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19910818 201503 2 006", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=200&auto=format&fit=crop" },
+            "Ryan William Manuputty, ST": { nama: "Ryan William Manuputty, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19900325 201503 1 004", avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=200&auto=format&fit=crop" },
+            "Erdin Calvin Leuwol, ST": { nama: "Erdin Calvin Leuwol, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19921112 201801 1 005", avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&auto=format&fit=crop" },
+            "Lakam Laitupa, S.Tr. T.K.J.J.": { nama: "Lakam Laitupa, S.Tr. T.K.J.J.", jabatan: "Staf Teknis Disposisi Surat", nip: "19930707 201903 1 008", avatar: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=200&auto=format&fit=crop" },
+            "Yuliana Barbara Persulessy, ST": { nama: "Yuliana Barbara Persulessy, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19940530 202001 2 011", avatar: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?q=80&w=200&auto=format&fit=crop" },
+            "Mutiah Zaila Isti Ishak, S.PWK": { nama: "Mutiah Zaila Isti Ishak, S.PWK", jabatan: "Staf Teknis Disposisi Surat", nip: "19951214 202012 2 015", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" },
+            "Hegi Daniel Mulya, ST": { nama: "Hegi Daniel Mulya, ST", jabatan: "Staf Teknis Disposisi Surat", nip: "19960203 202203 1 007", avatar: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=200&auto=format&fit=crop" }
+        };
+
+        const DATA_SURAT_DEMO = [
+            {
+                id: 1,
+                nomorSurat: "005/PUPR-ABN/2026/042",
+                tanggalSurat: "03 Maret 2026",
+                bidang: "Bina Marga",
+                pj: OFFICERS_DATA["Hermin Taranda, ST"],
+                status: "SELESAI",
+                statusText: "Selesai Ditindaklanjuti",
+                statusClass: "bg-emerald-100 text-emerald-800 border-emerald-300",
+                asalSurat: "Camat Sirimau - Kota Ambon",
+                perihalSurat: "Permohonan Perbaikan Jalan Rusak & Berlubang di Ruas Passo - Soya",
+                disposisiPimpinan: "Instruksi Kadis PUPR: Segera turunkan Tim Reaksi Cepat (TRC) Bina Marga untuk patching aspal dan pembersihan drainase. Selesaikan dalam 2x24 jam.",
+                dokumentasiPhotos: [
+                    "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=800&auto=format&fit=crop",
+                    "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop"
+                ],
+                catatanLapangan: "Pengaspalan ulang sepanjang 120m telah rampung 100% pada 05 Maret 2026 oleh Tim TRC Sektor Sirimau.",
+                scanSuratUrl: "https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=800&auto=format&fit=crop",
+                lastUpdate: "05 Mar 2026 14:20 WIT"
+            },
+            {
+                id: 2,
+                nomorSurat: "600/PUPR-CK/2026/118",
+                tanggalSurat: "01 Maret 2026",
+                bidang: "Cipta Karya",
+                pj: OFFICERS_DATA["Pieter G. Talakua, ST"],
+                status: "SELESAI",
+                statusText: "Selesai Ditindaklanjuti",
+                statusClass: "bg-emerald-100 text-emerald-800 border-emerald-300",
+                asalSurat: "Lurah Batu Merah",
+                perihalSurat: "Usulan Normalisasi & Pengangkatan Sedimen Drainase Kawasan Pemukiman",
+                disposisiPimpinan: "Instruksi Kadis PUPR: Koordinasikan dengan Bidang Cipta Karya. Alokasikan ekskavator mini dan armada pengangkut lumpur.",
+                dokumentasiPhotos: ["https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=800&auto=format&fit=crop"],
+                catatanLapangan: "Sedimen lumpur sepanjang 250 meter berhasil dibersihkan. Aliran air kembali lancar normal.",
+                scanSuratUrl: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop",
+                lastUpdate: "02 Mar 2026 16:00 WIT"
+            }
+        ];
+
+        let DATA_SURAT_PUPR = [...DATA_SURAT_DEMO];
+        let currentActiveStatusFilter = 'ALL';
+        let currentActiveModalData = null;
+        let gsheetsConfigUrl = localStorage.getItem('PUPR_GSHEETS_URL') || '';
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setupMobileMenu();
+            renderOfficersGrid();
+            
+            if (gsheetsConfigUrl) {
+                const urlInput = document.getElementById('gsheets-url-input');
+                if(urlInput) urlInput.value = gsheetsConfigUrl;
+                syncGoogleSheetsData();
+            } else {
+                renderSuratTable(DATA_SURAT_PUPR);
+                updateStatsCounters();
+            }
+
+            initHeroSlider();
+        });
+
+        // FIXED GOOGLE SHEETS SYNC ENGINE (Added redirect: follow & error catching)
+        async function syncGoogleSheetsData() {
+            const badge = document.getElementById('gsheets-status-badge');
+            const syncText = document.getElementById('gsheets-last-sync-text');
+            const btnSync = document.getElementById('btn-sync-gsheets');
+
+            if (!gsheetsConfigUrl) {
+                if(badge) {
+                    badge.className = "inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-300";
+                    badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-500 me-1.5 animate-pulse"></span> Demo Mode (Data Lokal)`;
+                }
+                if(syncText) syncText.innerText = "Belum terhubung. Klik 'Hubungkan Google Sheet' untuk menghubungkan.";
+                renderSuratTable(DATA_SURAT_DEMO);
+                updateStatsCounters();
+                return;
+            }
+
+            if(btnSync) btnSync.classList.add('opacity-50', 'pointer-events-none');
+            if(badge) {
+                badge.className = "inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800 border border-blue-300";
+                badge.innerHTML = `<i class="fa-solid fa-spinner fa-spin me-1.5"></i> Menghubungkan Google Sheets...`;
+            }
+
+            try {
+                const response = await fetch(gsheetsConfigUrl, {
+                    method: "GET",
+                    redirect: "follow"
+                });
+                
+                if (!response.ok) throw new Error("Gagal mengambil data dari Google Sheets API");
+
+                let fetchedData = await response.json();
+
+                if (Array.isArray(fetchedData) && fetchedData.length > 0) {
+                    DATA_SURAT_PUPR = fetchedData.map((item, idx) => {
+                        const namaPJ = item.PenanggungJawab || "Staf Teknis PUPR";
+                        return {
+                            id: idx + 1,
+                            nomorSurat: item.NomorSurat || "-",
+                            tanggalSurat: item.Tanggal || "-",
+                            asalSurat: item.AsalSurat || "-",
+                            perihalSurat: item.Perihal || "-",
+                            disposisiPimpinan: item.Disposisi || "Petunjuk Pimpinan",
+                            pj: OFFICERS_DATA[namaPJ] || { 
+                                nama: namaPJ, 
+                                jabatan: "Staf Teknis Disposisi Surat", 
+                                avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" 
+                            },
+                            status: (item.Status || "PROSES").toUpperCase(),
+                            statusText: (item.Status || "").toUpperCase() === "SELESAI" ? "Selesai Ditindaklanjuti" : "Dalam Proses Lapangan",
+                            statusClass: (item.Status || "").toUpperCase() === "SELESAI" ? "bg-emerald-100 text-emerald-800 border-emerald-300" : "bg-amber-100 text-amber-800 border-amber-300",
+                            scanSuratUrl: item.ScanURL || "https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=800&auto=format&fit=crop",
+                            dokumentasiPhotos: item.FotoLapangan ? [item.FotoLapangan] : ["https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=800&auto=format&fit=crop"],
+                            catatanLapangan: item.Catatan || "-"
+                        };
+                    });
+
+                    renderSuratTable(DATA_SURAT_PUPR);
+                    updateStatsCounters();
+
+                    if(badge) {
+                        badge.className = "inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300";
+                        badge.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-500 me-1.5"></span> Live Google Sheets Connected`;
+                    }
+                    if(syncText) syncText.innerText = `Terakhir disinkronkan: ${new Date().toLocaleTimeString('id-ID')} WIT`;
+                    showToast("Data surat berhasil disinkronkan dari Google Spreadsheet!", "success");
+                } else {
+                    throw new Error("Data Google Sheet kosong.");
+                }
+            } catch (err) {
+                console.error(err);
+                if(badge) {
+                    badge.className = "inline-flex items-center px-3 py-0.5 rounded-full text-xs font-bold bg-rose-100 text-rose-800 border border-rose-300";
+                    badge.innerHTML = `<i class="fa-solid fa-triangle-exclamation me-1.5"></i> Gagal Koneksi`;
+                }
+                if(syncText) syncText.innerText = "Gagal memuat spreadsheet. Menampilkan data lokal.";
+                showToast("Gagal menghubungkan Google Sheet.", "error");
+                renderSuratTable(DATA_SURAT_DEMO);
+                updateStatsCounters();
+            } finally {
+                if(btnSync) btnSync.classList.remove('opacity-50', 'pointer-events-none');
+            }
+        }
+
+        // Render Main Table
+        function renderSuratTable(dataList) {
+            const tbody = document.getElementById('surat-list-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            if (!dataList || dataList.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center py-12 text-slate-400">
+                            <i class="fa-solid fa-folder-open text-4xl mb-2 block"></i>
+                            Tidak ditemukan data surat sesuai pencarian.
+                        </td>
+                    </tr>
+                `;
+                document.getElementById('count-visible').innerText = '0';
+                document.getElementById('count-total').innerText = DATA_SURAT_PUPR.length;
+                return;
+            }
+
+            dataList.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition duration-150 border-b border-slate-200/80";
+                
+                tr.innerHTML = `
+                    <td class="p-4 text-center font-black text-slate-400 text-xs">${index + 1}</td>
+                    <td class="p-4">
+                        <div class="font-extrabold text-pupr-blue text-xs">${item.nomorSurat}</div>
+                        <div class="text-[11px] text-slate-500 mt-0.5"><i class="fa-regular fa-calendar me-1"></i>${item.tanggalSurat}</div>
+                    </td>
+                    <td class="p-4"><div class="font-bold text-slate-800 text-xs">${item.asalSurat}</div></td>
+                    <td class="p-4 max-w-xs">
+                        <div class="text-xs font-bold text-slate-800 truncate" title="${item.perihalSurat}">${item.perihalSurat}</div>
+                        <div class="text-[10px] text-slate-500 italic mt-0.5 truncate">" Disposisi: ${item.disposisiPimpinan} "</div>
+                    </td>
+                    <td class="p-4">
+                        <div class="flex items-center space-x-2">
+                            <img src="${item.pj ? item.pj.avatar : 'https://placehold.co/100?text=PUPR'}" class="w-7 h-7 rounded-full object-cover border border-slate-300">
+                            <div>
+                                <div class="text-xs font-bold text-slate-800">${item.pj ? item.pj.nama : '-'}</div>
+                                <div class="text-[10px] text-slate-500">${item.pj ? item.pj.jabatan : '-'}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="p-4 text-center">
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-extrabold border ${item.statusClass || 'bg-slate-100 text-slate-700'}">
+                            <span class="w-1.5 h-1.5 rounded-full me-1.5 ${item.status === 'SELESAI' ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
+                            ${item.statusText || item.status}
+                        </span>
+                    </td>
+                    <td class="p-4 text-center">
+                        <button onclick="openModalDetail(${item.id})" class="bg-pupr-blue hover:bg-pupr-lightblue text-white text-xs font-bold px-3 py-1.5 rounded-xl shadow-sm transition flex items-center gap-1.5 mx-auto">
+                            <i class="fa-solid fa-eye text-pupr-yellow"></i>
+                            <span>Detail & Scan</span>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            document.getElementById('count-visible').innerText = dataList.length;
+            document.getElementById('count-total').innerText = DATA_SURAT_PUPR.length;
+        }
+
+        // Modals Control Handlers
+        function openModalDetail(id) {
+            const item = DATA_SURAT_PUPR.find(x => x.id === id) || DATA_SURAT_DEMO.find(x => x.id === id);
+            if (!item) return;
+
+            currentActiveModalData = item;
+
+            document.getElementById('modal-nomor-surat').innerText = item.nomorSurat;
+            document.getElementById('modal-tanggal-surat').innerText = item.tanggalSurat;
+            document.getElementById('modal-asal-surat').innerText = item.asalSurat;
+            document.getElementById('modal-perihal-surat').innerText = item.perihalSurat;
+            document.getElementById('modal-disposisi-pimpinan').innerText = `"${item.disposisiPimpinan}"`;
+            document.getElementById('modal-bidang').innerText = item.bidang || 'PUPR Ambon';
+            document.getElementById('modal-last-update').innerText = item.lastUpdate || 'Baru Saja';
+
+            document.getElementById('modal-pj-container').innerHTML = `
+                <div class="flex items-center space-x-2 justify-end">
+                    <img src="${item.pj ? item.pj.avatar : 'https://placehold.co/100?text=PUPR'}" class="w-8 h-8 rounded-full border border-pupr-yellow object-cover">
+                    <div class="text-right">
+                        <div class="text-xs font-extrabold text-pupr-blue">${item.pj ? item.pj.nama : '-'}</div>
+                        <div class="text-[10px] text-slate-500 font-medium">${item.pj ? item.pj.jabatan : '-'}</div>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modal-status-badge').innerHTML = `
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-extrabold border ${item.statusClass || 'bg-slate-100'}">
+                    <span class="w-2 h-2 rounded-full me-2 ${item.status === 'SELESAI' ? 'bg-emerald-500' : 'bg-amber-500'}"></span>
+                    ${item.statusText || item.status}
+                </span>
+            `;
+
+            document.getElementById('modal-scan-img').src = item.scanSuratUrl;
+
+            const gallery = document.getElementById('modal-dokumentasi-gallery');
+            gallery.innerHTML = '';
+            const photos = item.dokumentasiPhotos || [item.scanSuratUrl];
+            photos.forEach((photoUrl, pIdx) => {
+                gallery.innerHTML += `
+                    <div class="rounded-2xl overflow-hidden border border-slate-200 shadow-sm relative group">
+                        <img src="${photoUrl}" class="w-full h-40 object-cover group-hover:scale-105 transition duration-300">
+                        <div class="absolute bottom-2 left-2 bg-black/70 text-white text-[10px] px-2 py-0.5 rounded-md backdrop-blur">
+                            Foto Bukti Lapangan #${pIdx+1}
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('modal-catatan-lapangan').innerText = item.catatanLapangan || '-';
+
+            switchModalTab('scan');
+            document.getElementById('modal-detail-surat').classList.remove('hidden');
+        }
+
+        function closeModalDetail() {
+            document.getElementById('modal-detail-surat').classList.add('hidden');
+        }
+
+        function switchModalTab(tabName) {
+            const btnScan = document.getElementById('tab-btn-scan');
+            const btnDok = document.getElementById('tab-btn-dokumentasi');
+            const contentScan = document.getElementById('tab-content-scan');
+            const contentDok = document.getElementById('tab-content-dokumentasi');
+
+            if (tabName === 'scan') {
+                contentScan.classList.remove('hidden');
+                contentDok.classList.add('hidden');
+                btnScan.className = 'flex-1 py-3 px-4 font-extrabold text-xs uppercase tracking-wider text-center border-b-2 border-pupr-blue text-pupr-blue bg-white transition';
+                btnDok.className = 'flex-1 py-3 px-4 font-extrabold text-xs uppercase tracking-wider text-center text-slate-500 border-b-2 border-transparent hover:text-pupr-blue transition';
+            } else {
+                contentScan.classList.add('hidden');
+                contentDok.classList.remove('hidden');
+                btnDok.className = 'flex-1 py-3 px-4 font-extrabold text-xs uppercase tracking-wider text-center border-b-2 border-pupr-blue text-pupr-blue bg-white transition';
+                btnScan.className = 'flex-1 py-3 px-4 font-extrabold text-xs uppercase tracking-wider text-center text-slate-500 border-b-2 border-transparent hover:text-pupr-blue transition';
+            }
+        }
+
+        // Filtering Table
+        function filterSuratTable() {
+            const query = document.getElementById('search-surat-input').value.toLowerCase();
+            const filtered = DATA_SURAT_PUPR.filter(item => {
+                const matchStatus = (currentActiveStatusFilter === 'ALL') || (item.status === currentActiveStatusFilter);
+                const matchText = (item.nomorSurat || '').toLowerCase().includes(query) ||
+                                  (item.perihalSurat || '').toLowerCase().includes(query) ||
+                                  (item.asalSurat || '').toLowerCase().includes(query) ||
+                                  ((item.pj && item.pj.nama) || '').toLowerCase().includes(query);
+                return matchStatus && matchText;
+            });
+            renderSuratTable(filtered);
+        }
+
+        function setFilterStatus(status) {
+            currentActiveStatusFilter = status;
+            document.querySelectorAll('.status-btn').forEach(btn => {
+                btn.classList.remove('bg-pupr-blue', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+
+            if(status === 'ALL') document.getElementById('btn-status-all').className = 'status-btn active-status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-pupr-blue text-white shadow-sm';
+            if(status === 'SELESAI') document.getElementById('btn-status-selesai').className = 'status-btn active-status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-pupr-blue text-white shadow-sm';
+            if(status === 'PROSES') document.getElementById('btn-status-proses').className = 'status-btn active-status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-pupr-blue text-white shadow-sm';
+            if(status === 'DISPOSISI') document.getElementById('btn-status-disposisi').className = 'status-btn active-status-btn px-4 py-2 rounded-xl text-xs font-bold transition bg-pupr-blue text-white shadow-sm';
+
+            filterSuratTable();
+        }
+
+        // Google Sheets Modal Controller Functions
+        function openModalGSheets() {
+            const modal = document.getElementById('modal-google-sheets');
+            if (modal) modal.classList.remove('hidden');
+        }
+
+        function closeModalGSheets() {
+            const modal = document.getElementById('modal-google-sheets');
+            if (modal) modal.classList.add('hidden');
+        }
+
+        function saveGoogleSheetsConfig() {
+            const urlInput = document.getElementById('gsheets-url-input').value.trim();
+            if (!urlInput) {
+                showToast("Silakan masukkan URL Google Apps Script Anda.", "error");
+                return;
+            }
+            gsheetsConfigUrl = urlInput;
+            localStorage.setItem('PUPR_GSHEETS_URL', gsheetsConfigUrl);
+            closeModalGSheets();
+            syncGoogleSheetsData();
+        }
+
+        function resetToLocalData() {
+            localStorage.removeItem('PUPR_GSHEETS_URL');
+            gsheetsConfigUrl = '';
+            const urlInput = document.getElementById('gsheets-url-input');
+            if(urlInput) urlInput.value = '';
+            closeModalGSheets();
+            DATA_SURAT_PUPR = [...DATA_SURAT_DEMO];
+            syncGoogleSheetsData();
+            showToast("Kembali menggunakan mode data lokal.", "success");
+        }
+
+        function fillSampleGSheetURL() {
+            const urlInput = document.getElementById('gsheets-url-input');
+            if(urlInput) urlInput.value = "https://script.google.com/macros/s/AKfycbx_DEMO_PUPR_AMBON_API/exec";
+            showToast("URL Demo terisi. Klik 'Simpan & Hubungkan'.", "success");
+        }
+
+        function copyAppsScriptCode() {
+            const code = document.getElementById('apps-script-code-block').innerText;
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast("Kode Apps Script berhasil disalin!", "success");
+        }
+
+        // Add Surat Modal Controls
+        function openModalAddSurat() {
+            const modal = document.getElementById('modal-add-surat');
+            if(modal) modal.classList.remove('hidden');
+        }
+        function closeModalAddSurat() {
+            const modal = document.getElementById('modal-add-surat');
+            if(modal) modal.classList.add('hidden');
+        }
+        function submitNewSurat() {
+            const bidang = document.getElementById('add-bidang').value;
+            const newObj = {
+                id: Date.now(),
+                nomorSurat: document.getElementById('add-nomor').value,
+                tanggalSurat: document.getElementById('add-tanggal').value,
+                asalSurat: document.getElementById('add-asal').value,
+                perihalSurat: document.getElementById('add-perihal').value,
+                disposisiPimpinan: document.getElementById('add-disposisi').value,
+                bidang: bidang,
+                pj: OFFICERS_DATA[bidang] || OFFICERS_DATA["Hermin Taranda, ST"],
+                status: "PROSES",
+                statusText: "Proses Baru Masuk",
+                statusClass: "bg-amber-100 text-amber-800 border-amber-300",
+                dokumentasiPhotos: ["https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=800&auto=format&fit=crop"],
+                catatanLapangan: "Baru saja diinput ke sistem e-disposisi PUPR.",
+                scanSuratUrl: "https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=800&auto=format&fit=crop",
+                lastUpdate: new Date().toLocaleTimeString('id-ID')
+            };
+
+            DATA_SURAT_PUPR.unshift(newObj);
+            renderSuratTable(DATA_SURAT_PUPR);
+            updateStatsCounters();
+            closeModalAddSurat();
+            showToast("Surat baru berhasil ditambahkan!", "success");
+        }
+
+        function renderOfficersGrid() {
+            const grid = document.getElementById('pj-officers-grid');
+            if(!grid) return;
+            grid.innerHTML = '';
+            Object.keys(OFFICERS_DATA).forEach(key => {
+                const off = OFFICERS_DATA[key];
+                grid.innerHTML += `
+                    <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-sm text-center flex flex-col items-center">
+                        <img src="${off.avatar}" class="w-16 h-16 rounded-full object-cover border-2 border-pupr-yellow shadow-md mb-3">
+                        <h4 class="font-extrabold text-sm text-pupr-blue">${off.nama}</h4>
+                        <p class="text-xs text-slate-500 font-semibold">${off.jabatan}</p>
+                        <span class="mt-3 text-[10px] bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full border border-slate-200 font-mono">NIP: ${off.nip}</span>
+                    </div>
+                `;
+            });
+        }
+
+        function updateStatsCounters() {
+            const totalEl = document.getElementById('stat-total-surat');
+            const selesaiEl = document.getElementById('stat-selesai');
+            if(totalEl) totalEl.innerText = DATA_SURAT_PUPR.length;
+            if(selesaiEl) selesaiEl.innerText = DATA_SURAT_PUPR.filter(x => x.status === 'SELESAI').length;
+        }
+
+        function simulateDownloadDoc() {
+            if(currentActiveModalData) {
+                showToast(`Mengunduh scan isi surat: ${currentActiveModalData.nomorSurat}`, 'success');
+            }
+        }
+
+        function setupMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+            }
+        }
+
+        function showToast(message, type = "success") {
+            const toast = document.getElementById('toast-message');
+            const icon = document.getElementById('toast-icon');
+            const text = document.getElementById('toast-text');
+            if(!toast) return;
+
+            text.innerText = message;
+            if (type === "success") {
+                icon.className = "fa-solid fa-circle-check text-emerald-400 text-lg";
+            } else {
+                icon.className = "fa-solid fa-triangle-exclamation text-rose-400 text-lg";
+            }
+
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3500);
+        }
+
+        // Background Slider for Hero Section
+        function initHeroSlider() {
+            const images = [
+                "https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?q=80&w=1600&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=1600&auto=format&fit=crop",
+                "https://images.unsplash.com/photo-1590496793929-36417d3117de?q=80&w=1600&auto=format&fit=crop"
+            ];
+
+            let currentIndex = 0;
+            const heroBg = document.getElementById('hero-bg');
+            if (!heroBg) return;
+
+            setInterval(() => {
+                heroBg.classList.remove('opacity-100');
+                heroBg.classList.add('opacity-0');
+
+                setTimeout(() => {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    heroBg.src = images[currentIndex];
+
+                    heroBg.classList.remove('opacity-0');
+                    heroBg.classList.add('opacity-100');
+                }, 500);
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
